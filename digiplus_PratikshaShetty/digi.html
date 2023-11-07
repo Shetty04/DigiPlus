@@ -1,0 +1,190 @@
+
+<!DOCTYPE html> 
+<html> 
+  
+<head> 
+    <title> 
+          DigiPlus 
+      </title> 
+    <style> 
+        body { 
+            margin: 4rem; 
+        } 
+  
+        #formContainer { 
+            margin-bottom: 20px; 
+        } 
+  
+        label { 
+            display: block; 
+            margin-top: 10px; 
+        } 
+  
+        input, 
+        textarea { 
+            width: 300px; 
+            padding: 8px; 
+            margin-top: 5px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+        } 
+  
+        button { 
+            margin: 10px; 
+            padding: 8px 16px; 
+            background-color: rgb(226, 156, 24); 
+            color: #fff; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+        } 
+  
+        button:hover { 
+            background-color: #e29c32; 
+        } 
+  
+        table { 
+            border-collapse: collapse; 
+            margin-bottom: 20px; 
+            width: 100%; 
+        } 
+  
+        th, 
+        td { 
+            border: 1px solid #ddd; 
+            padding: 8px; 
+            text-align: left; 
+        } 
+  
+        th { 
+            background-color: rgb(182, 101, 25); 
+            color: #fff; 
+        } 
+    </style> 
+</head> 
+  
+<body> 
+    <h1 style="color: rgb(192, 92, 26);"> 
+       
+    </h1> 
+    <h2></h2> 
+  
+    <div id="formContainer"> 
+        <label for="numInput"> 
+            Row Num 
+        </label> 
+        <input type="number" id="numInput" placeholder="Enter the row number in series">
+        <label for="nameInput">Name</label>
+        <input type="text" 
+               id="nameInput" 
+               placeholder="Enter your name"> 
+        <label for="lInput"> 
+            Location
+        </label> 
+        <input type="text" 
+               id="lInput" 
+               placeholder="Enter your location"> 
+        <label for="numberInput"> 
+            CGPA
+        </label> 
+        <input type="text" 
+               id="numberInput" 
+               placeholder="Enter your CGPA"> 
+        
+        <button onclick="addData()"> 
+              Add 
+          </button> 
+    </div> 
+    <table id="outputTable"> 
+        <tr> 
+            <th>Row Num</th> 
+            <th>Name</th> 
+            <th>Location</th> 
+            <th>CGPA</th> 
+            <th>Action</th> 
+        </tr> 
+    </table> 
+    <script> 
+        function addData() { 
+            
+            let num = 
+                document.getElementById("numInput").value; 
+            let name = 
+                document.getElementById("nameInput").value;
+            let location = 
+                document.getElementById("lInput").value; 
+            let mobile = 
+                document.getElementById("numberInput").value; 
+            
+            
+             
+            let table = document.getElementById("outputTable"); 
+            let newRow = table.insertRow(table.rows.length); 
+            
+             
+            newRow.insertCell(0).innerHTML = num; 
+            newRow.insertCell(1).innerHTML = name; 
+            newRow.insertCell(2).innerHTML = location; 
+            newRow.insertCell(3).innerHTML = CGPA; 
+            newRow.insertCell(4).innerHTML = 
+                '<button onclick="editData(this)">Edit</button>'+ 
+                '<button onclick="deleteData(this)">Delete</button>'; 
+            
+             
+            clearInputs(); 
+        } 
+  
+        function editData(button) { 
+            
+            
+            let row = button.parentNode.parentNode; 
+            
+            
+            let numCell = row.cells[0]; 
+            let nameCell = row.cells[1];
+            let locationCell = row.cells[2]; 
+            let CGPACell = row.cells[3]; 
+            
+            
+            
+            let numInput = 
+                prompt("Enter the updated row:", 
+                    numCell.innerHTML); 
+            let nameInput = 
+                prompt("Enter the updated name:", 
+                    nameCell.innerHTML);         
+            let lInput = 
+                prompt("Enter the updated location:", 
+                    locationCell.innerHTML); 
+            let numberInput = 
+                prompt("Enter the updated mobile details:", 
+                    CGPACell.innerHTML 
+                ); 
+           
+            
+            
+            numCell.innerHTML = nameInput; 
+            locationCell.innerHTML = lInput; 
+            CGPACell.innerHTML = numberInput; 
+            
+        } 
+        function deleteData(button) { 
+            
+           
+            let row = button.parentNode.parentNode; 
+  
+            
+            row.parentNode.removeChild(row); 
+        } 
+        function clearInputs() { 
+            
+            document.getElementById("nmInput").value = ""; 
+            document.getElementById("nameInput").value = ""; 
+            document.getElementById("lInput").value = ""; 
+            document.getElementById("numberInput").value = ""; 
+           
+        } 
+    </script> 
+</body> 
+  
+</html>
